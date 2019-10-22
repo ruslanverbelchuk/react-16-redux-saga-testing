@@ -1,4 +1,4 @@
-import {put, takeLatest, all, fork } from 'redux-saga/effects';
+import {put, takeLatest, all, call } from 'redux-saga/effects';
 import {
   fetchRatesSuccess,
   fetchRatesFailure
@@ -6,7 +6,7 @@ import {
 import RateActionTypes from './rate.types';
 
 const BASED_URL = 'https://api.exchangeratesapi.io/latest'; // 'https://newsapi.org/v1/articles?source=cnn&apiKey=c39a26d9c12f48dba2a5c00e35684ecc'
-function* fetchRates() {
+function* fetchRatesStartAsyncSaga() {
   try {
     const json = yield fetch(BASED_URL).then(response => response.json());
 
@@ -17,10 +17,10 @@ function* fetchRates() {
 
 
 }
-function* actionWatcher() {
-  yield takeLatest(RateActionTypes.FETCH_RATES_START, fetchRates);
+function* fetchRatesStartSaga() {
+  yield takeLatest(RateActionTypes.FETCH_RATES_START, fetchRatesStartAsyncSaga);
 }
 
 export default function* rootSaga() {
-  yield all([fork(actionWatcher)]);
+  yield all(w[call(fetchRatesStartSaga)]);
 }
