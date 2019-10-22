@@ -22,5 +22,5 @@ function* fetchRatesStartSaga() {
 }
 
 export default function* rootSaga() {
-  yield all(w[call(fetchRatesStartSaga)]);
+  yield all([call(fetchRatesStartSaga)]);
 }
