@@ -6,7 +6,7 @@ import {
 import RateActionTypes from './rate.types';
 
 const BASED_URL = 'https://api.exchangeratesapi.io/latest'; // 'https://newsapi.org/v1/articles?source=cnn&apiKey=c39a26d9c12f48dba2a5c00e35684ecc'
-function* fetchRatesStartAsyncSaga() {
+export function* fetchRatesStartAsyncSaga() {
   try {
     const json = yield fetch(BASED_URL).then(response => response.json());
 
@@ -17,7 +17,7 @@ function* fetchRatesStartAsyncSaga() {
 
 
 }
-function* fetchRatesStartSaga() {
+export function* fetchRatesStartSaga() {
   yield takeLatest(RateActionTypes.FETCH_RATES_START, fetchRatesStartAsyncSaga);
 }
 
