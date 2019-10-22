@@ -2,16 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import img from '../assets/loading_spinner.gif';
 
-let Loading = ({loading}) =>
-  loading ? (
+let Loading = ({isFetching}) =>
+  isFetching ? (
     <div style={{textAlign: 'center'}}>
-      <img src={img} alt="loading" />
+      <img src={img} alt="isFetching" />
       <h1>LOADING</h1>
     </div>
   ) : null;
 
 const mapStateToProps = state => ({
-  loading: state.loading,
+  isFetching: state.isFetching,
 });
 
 Loading = connect(

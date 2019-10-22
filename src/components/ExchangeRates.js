@@ -32,7 +32,7 @@ let ExchangeRates = ({rate}) => {
 };
 
 const mapStateToProps = state => ({
-  rate: state.rates,
+  rate: state.rateItems,
 });
 
 ExchangeRates = connect(

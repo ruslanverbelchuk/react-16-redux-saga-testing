@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getRates} from '../actions';
+import {fetchRatesStart} from '../redux/rate/rate.actions';
 
 const styles = {
   width: '200px',
@@ -12,14 +12,9 @@ const styles = {
 };
 
 class Button extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {hover: false};
-  }
-
   render() {
     return (
-      <button style={styles} onClick={this.props.getRates}>
+      <button style={styles} onClick={this.props.fetchRatesStart}>
         Get Rates
       </button>
     );
@@ -27,7 +22,7 @@ class Button extends React.Component {
 }
 
 const mapDispatchToProps = {
-  getRates,
+  fetchRatesStart,
 };
 
 Button = connect(

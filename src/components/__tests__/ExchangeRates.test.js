@@ -11,7 +11,7 @@ beforeEach(() => {
 
 describe('<ExchangeRate>', () => {
   it('has an ExchangeRate', () => {
-    wrapper.setProps({ rate : {"rates":{"CAD":1.4563,"HKD":8.65},"base":"EUR","date":"2019-10-16"} });
+    wrapper.setProps({ rate : {"rateItems":{"CAD":1.4563,"HKD":8.65},"base":"EUR","date":"2019-10-16"} });
     expect(wrapper.find(ExchangeRates)).toHaveLength(1);
 
   });
